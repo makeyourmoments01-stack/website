@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<title>Make Your Moment — Digital Invitation Templates</title>
+<meta name="description" content="Personalised animated digital invitations for every occasion. Share as a link. Starting ₹39."/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,600;1,500&display=swap" rel="stylesheet"/>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<!-- Firebase SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getFirestore, collection, getDocs, addDoc, doc, updateDoc, deleteDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  import { getStorage, ref, uploadString, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+
+  // ── FIREBASE CONFIG ──
+  const firebaseConfig = {
+    apiKey: "AIzaSyDiJ_dUvgz5H1HlchW-uzOfwMFr9HdycV8",
+    authDomain: "mymdata.firebaseapp.com",
+    projectId: "mymdata",
+    storageBucket: "mymdata.firebasestorage.app",
+    messagingSenderId: "345559899213",
+    appId: "1:345559899213:web:d3f7334bdb1c5610191004"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db  = getFirestore(app);
+  const storage = getStorage(app);
+
+  window._fbDb = db;
+  window._fbStorage = storage;
+  window._fbFns = { collection, getDocs, addDoc, doc, updateDoc, deleteDoc, onSnapshot, query, orderBy, ref, uploadString, getDownloadURL };
+  window._fbReady = true;
+  window.dispatchEvent(new Event('fb-ready'));
+</script>
+
+<style>
+:root{
+  --navy:      #141720;
+  --navy2:     #181c27;
+  --navy3:     #1e2230;
+  --surface:   #1e222e;
+  --surface2:  #252a38;
+  --teal:      #00c2b3;
+  --teal2:     #009e91;
+  --teal-dim:  rgba(0,194,179,0.10);
+  --teal-border:rgba(0,194,179,0.25);
+  --text:      #f0f2f8;
+  --text2:     #8b92a8;
+  --text3:     #4a5168;
+  --border:    rgba(255,255,255,0.06);
+  --border2:   rgba(255,255,255,0.11);
+  --green:     #2ecc8e;
+  --green-dim: rgba(46,204,142,0.09);
+  --gold:      #f5c542;
+  --gold-dim:  rgba(245,197,66,0.10);
+  --gold-border: rgba(245,197,66,0.28);
+  --purple:    #8b5cf6;
+  --purple-dim: rgba(139,92,246,0.10);
+  --purple-border: rgba(139,92,246,0.28);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:var(--navy);
+  color:var(--text);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;opacity:0.5;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:56px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 20px;background:rgba(20,23,32,0.96);backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none;}
+.nav-logo-mark{width:28px;height:28px;border-radius:7px;background:linear-gradient(135deg,#006e67,var(--teal));display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;font-weight:800;box-shadow:0 0 14px rgba(0,194,179,0.3);flex-shrink:0;}
+.nav-logo-text{font-size:0.88rem;font-weight:700;color:var(--text);letter-spacing:-0.01em;white-space:nowrap;}
+.nav-logo-text span{color:var(--teal);}
+.nav-right{display:flex;align-items:center;gap:8px;}
+.nav-link{font-size:0.75rem;color:var(--text2);text-decoration:none;font-weight:500;padding:5px 10px;border-radius:6px;transition:color 0.2s;display:none;}
+.nav-link:hover{color:var(--text);}
+@media(min-width:640px){.nav-link{display:block;}}
+.nav-wa{display:flex;align-items:center;gap:5px;padding:7px 13px;background:var(--green-dim);border:1px solid rgba(46,204,142,0.22);color:var(--green);font-size:0.72rem;font-weight:700;text-decoration:none;border-radius:8px;transition:background 0.2s;letter-spacing:0.01em;white-space:nowrap;}
+.nav-wa:hover{background:rgba(46,204,142,0.16);}
+
+/* ── HERO ── */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:90px 20px 64px;z-index:1;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(0,194,179,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,194,179,0.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+.hero-glow{position:absolute;width:min(800px,130vw);height:400px;background:radial-gradient(ellipse,rgba(0,155,143,0.13) 0%,transparent 68%);top:50%;left:50%;transform:translate(-50%,-58%);pointer-events:none;}
+.hero-pill{display:inline-flex;align-items:center;gap:7px;font-size:0.65rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--teal);background:var(--teal-dim);border:1px solid var(--teal-border);padding:5px 14px;border-radius:100px;margin-bottom:24px;}
+.hero-pill-dot{width:5px;height:5px;border-radius:50%;background:var(--teal);animation:pdot 2s ease-in-out infinite;}
+@keyframes pdot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(0.6);}}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,8vw,5.2rem);font-weight:600;line-height:1.06;letter-spacing:-0.02em;color:var(--text);margin-bottom:18px;max-width:720px;}
+.hero-title em{font-style:italic;background:linear-gradient(120deg,var(--teal),#00e8d8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{font-size:0.92rem;font-weight:400;color:var(--text2);line-height:1.75;max-width:440px;margin-bottom:32px;}
+.hero-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.btn-primary{display:inline-flex;align-items:center;gap:7px;padding:12px 24px;background:var(--teal2);color:#fff;font-size:0.83rem;font-weight:700;border:none;border-radius:9px;cursor:pointer;transition:all 0.2s;text-decoration:none;box-shadow:0 4px 22px rgba(0,158,145,0.38);letter-spacing:0.01em;font-family:inherit;}
+.btn-primary:hover{background:var(--teal);box-shadow:0 6px 28px rgba(0,194,179,0.48);transform:translateY(-1px);}
+.btn-ghost{display:inline-flex;align-items:center;gap:7px;padding:12px 20px;background:rgba(255,255,255,0.05);color:var(--text);font-size:0.83rem;font-weight:500;border:1px solid var(--border2);border-radius:9px;cursor:pointer;transition:all 0.2s;text-decoration:none;}
+.btn-ghost:hover{background:rgba(255,255,255,0.09);}
+.hero-stats{display:flex;gap:36px;margin-top:48px;padding-top:32px;border-top:1px solid var(--border);flex-wrap:wrap;justify-content:center;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;color:var(--text);display:block;letter-spacing:-0.02em;}
+.stat-label{font-size:0.68rem;color:var(--text2);margin-top:2px;display:block;font-weight:500;letter-spacing:0.02em;}
+
+/* ── TRUST BAR ── */
+.trust-bar{background:var(--navy2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:16px 20px;display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;position:relative;z-index:1;}
+.trust-item{display:flex;align-items:center;gap:7px;font-size:0.72rem;color:var(--text2);font-weight:500;}
+.trust-icon{width:14px;height:14px;color:var(--teal);flex-shrink:0;}
+
+/* ── SECTION ── */
+.section{max-width:1200px;margin:0 auto;padding:72px 20px;position:relative;z-index:1;}
+.section-eyebrow{font-size:0.65rem;font-weight:700;letter-spacing:0.12em;color:var(--teal);text-transform:uppercase;margin-bottom:8px;}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,5vw,3rem);font-weight:600;color:var(--text);letter-spacing:-0.015em;line-height:1.08;margin-bottom:8px;}
+.section-sub{font-size:0.85rem;color:var(--text2);line-height:1.75;max-width:440px;}
+
+/* ── TEMPLATE GRID ── */
+.templates-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:18px;margin-top:36px;}
+.template-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;cursor:pointer;transition:all 0.28s ease;position:relative;}
+.template-card:hover{border-color:var(--teal-border);transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,0.4),0 0 0 1px rgba(0,194,179,0.12);}
+.card-preview{height:200px;position:relative;overflow:hidden;background:var(--navy3);}
+.card-preview img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;display:block;}
+.template-card:hover .card-preview img{transform:scale(1.04);}
+.card-preview::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(30,34,46,0.88) 100%);pointer-events:none;}
+.card-badge{position:absolute;top:12px;left:12px;z-index:2;font-size:0.57rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--teal);background:rgba(0,194,179,0.15);border:1px solid var(--teal-border);padding:4px 10px;border-radius:5px;backdrop-filter:blur(6px);}
+.card-preview-emoji{position:absolute;bottom:12px;left:14px;z-index:2;font-size:1.6rem;line-height:1;}
+.card-free-badge{position:absolute;top:12px;right:12px;z-index:2;font-size:0.55rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:#fff;background:var(--green);padding:4px 10px;border-radius:5px;}
+.card-paid-badge{position:absolute;top:12px;right:12px;z-index:2;font-size:0.55rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:#fff;background:var(--teal2);padding:4px 10px;border-radius:5px;}
+.card-body{padding:18px 18px 20px;}
+.card-title{font-size:0.96rem;font-weight:700;color:var(--text);margin-bottom:5px;letter-spacing:-0.01em;}
+.card-desc{font-size:0.74rem;color:var(--text2);line-height:1.7;margin-bottom:16px;}
+.card-footer{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid var(--border);gap:8px;}
+.card-price{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--text);letter-spacing:-0.01em;flex-shrink:0;}
+.card-price small{font-family:'Plus Jakarta Sans',sans-serif;font-size:0.6rem;font-weight:500;color:var(--text3);margin-left:2px;}
+.card-price-free{font-size:0.75rem;font-weight:700;color:var(--green);}
+.card-cta{font-size:0.72rem;font-weight:700;color:var(--teal);background:var(--teal-dim);border:1px solid var(--teal-border);padding:7px 14px;border-radius:7px;cursor:pointer;transition:all 0.2s;font-family:inherit;white-space:nowrap;}
+.card-cta:hover{background:rgba(0,194,179,0.2);}
+.card-cta-green{font-size:0.72rem;font-weight:700;color:var(--green);background:var(--green-dim);border:1px solid rgba(46,204,142,0.25);padding:7px 14px;border-radius:7px;cursor:pointer;transition:all 0.2s;font-family:inherit;white-space:nowrap;}
+.card-cta-green:hover{background:rgba(46,204,142,0.16);}
+
+/* ── HOW IT WORKS ── */
+.how-section{background:var(--navy2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:72px 20px;position:relative;z-index:1;}
+.how-inner{max-width:1100px;margin:0 auto;}
+.steps-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-top:40px;}
+@media(min-width:768px){.steps-grid{grid-template-columns:repeat(4,1fr);}}
+.step{padding:22px 20px;text-align:center;position:relative;}
+@media(min-width:768px){.step:not(:last-child)::after{content:'';position:absolute;right:0;top:42px;width:1px;height:24px;background:var(--border2);}}
+.step-num{width:40px;height:40px;border-radius:10px;background:var(--teal-dim);border:1px solid var(--teal-border);font-size:0.78rem;font-weight:700;color:var(--teal);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;}
+.step-title{font-size:0.84rem;font-weight:700;color:var(--text);margin-bottom:7px;}
+.step-desc{font-size:0.70rem;color:var(--text2);line-height:1.7;}
+
+/* ── PRODUCT PAGE ── */
+.product-page{display:none;position:fixed;inset:0;background:var(--navy);z-index:300;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+.product-page.show{display:block;}
+.product-topbar{position:sticky;top:0;z-index:10;height:52px;background:rgba(20,23,32,0.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 20px;display:flex;align-items:center;justify-content:space-between;}
+.back-btn{display:flex;align-items:center;gap:6px;font-size:0.76rem;font-weight:600;color:var(--text2);cursor:pointer;background:none;border:none;font-family:inherit;transition:color 0.2s;}
+.back-btn:hover{color:var(--text);}
+.back-btn svg{width:14px;height:14px;}
+.topbar-title{font-size:0.75rem;color:var(--text3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px;}
+.product-inner{max-width:1040px;margin:0 auto;padding:36px 20px 80px;}
+.product-tag{display:inline-block;font-size:0.58rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);background:var(--teal-dim);border:1px solid var(--teal-border);padding:4px 11px;border-radius:6px;margin-bottom:14px;}
+.product-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,6vw,3.2rem);font-weight:600;color:var(--text);letter-spacing:-0.02em;margin-bottom:10px;line-height:1.06;}
+.product-desc{font-size:0.85rem;color:var(--text2);line-height:1.82;max-width:560px;margin-bottom:32px;}
+.product-layout{display:grid;grid-template-columns:1fr;gap:28px;align-items:start;}
+@media(min-width:768px){.product-layout{grid-template-columns:1fr 340px;gap:40px;}}
+.product-preview-wrap{border-radius:16px;overflow:hidden;border:1px solid var(--border);margin-bottom:24px;height:260px;position:relative;background:var(--navy3);}
+@media(min-width:480px){.product-preview-wrap{height:300px;}}
+.product-preview-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
+.product-preview-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(20,23,32,0.7) 100%);}
+.product-emoji-overlay{position:absolute;bottom:14px;left:16px;font-size:2rem;line-height:1;}
+.included-label{font-size:0.64rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text2);margin-bottom:14px;}
+.included-list{list-style:none;}
+.included-list li{font-size:0.8rem;color:var(--text2);padding:9px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px;}
+.included-list li:last-child{border-bottom:none;}
+.check{width:15px;height:15px;border-radius:4px;background:rgba(0,194,179,0.12);border:1px solid var(--teal-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.check svg{width:8px;height:8px;}
+
+/* ── OPTION PICKER ── */
+.option-picker{margin-bottom:20px;}
+.option-picker-label{font-size:0.64rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text2);margin-bottom:12px;}
+.option-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.option-card{border-radius:12px;padding:14px 12px;cursor:pointer;border:2px solid var(--border2);background:var(--navy3);transition:all 0.22s;position:relative;overflow:hidden;}
+.option-card.selected-code{border-color:var(--gold-border);background:var(--gold-dim);}
+.option-card.selected-site{border-color:var(--purple-border);background:var(--purple-dim);}
+.option-card:hover{border-color:var(--border2);filter:brightness(1.1);}
+.option-card-icon{font-size:1.4rem;margin-bottom:7px;}
+.option-card-name{font-size:0.75rem;font-weight:700;color:var(--text);margin-bottom:3px;}
+.option-card-price{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--gold);}
+.option-card.selected-site .option-card-price{color:var(--purple);}
+.option-card-desc{font-size:0.60rem;color:var(--text2);line-height:1.5;margin-top:4px;}
+.option-check{position:absolute;top:8px;right:8px;width:18px;height:18px;border-radius:50%;background:var(--gold);display:none;align-items:center;justify-content:center;}
+.selected-code .option-check{display:flex;}
+.selected-site .option-check{display:flex;background:var(--purple);}
+.option-check svg{width:10px;height:10px;color:#fff;}
+
+/* ── CODE INSTRUCTIONS ── */
+.code-instructions{background:var(--navy3);border:1px solid var(--border2);border-radius:12px;padding:16px;margin:14px 0;}
+.code-instr-title{font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.code-instr-list{list-style:none;}
+.code-instr-list li{font-size:0.72rem;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:8px;line-height:1.5;}
+.code-instr-list li:last-child{border-bottom:none;}
+.code-instr-list li span.dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:5px;}
+
+/* ── BUY BOX ── */
+.buy-box{background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:24px;}
+@media(min-width:768px){.buy-box{position:sticky;top:72px;}}
+.buy-price{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:600;color:var(--text);letter-spacing:-0.02em;}
+.buy-price-tag{font-size:0.68rem;color:var(--text3);margin-left:4px;font-weight:500;}
+.buy-sub{font-size:0.71rem;color:var(--text2);margin-bottom:20px;line-height:1.65;margin-top:5px;}
+.buy-divider{height:1px;background:var(--border);margin:18px 0;}
+.buy-btn{width:100%;padding:14px;background:var(--teal2);color:#fff;font-size:0.82rem;font-weight:700;border:none;border-radius:9px;cursor:pointer;font-family:inherit;margin-bottom:10px;box-shadow:0 4px 20px rgba(0,158,145,0.35);transition:all 0.2s;letter-spacing:0.01em;}
+.buy-btn:hover{background:var(--teal);box-shadow:0 6px 26px rgba(0,194,179,0.46);transform:translateY(-1px);}
+.buy-btn-gold{width:100%;padding:14px;background:linear-gradient(135deg,#c9860a,var(--gold));color:#fff;font-size:0.82rem;font-weight:700;border:none;border-radius:9px;cursor:pointer;font-family:inherit;margin-bottom:10px;box-shadow:0 4px 20px rgba(245,197,66,0.28);transition:all 0.2s;letter-spacing:0.01em;}
+.buy-btn-gold:hover{opacity:0.9;transform:translateY(-1px);}
+.buy-btn-purple{width:100%;padding:14px;background:linear-gradient(135deg,#6d28d9,var(--purple));color:#fff;font-size:0.82rem;font-weight:700;border:none;border-radius:9px;cursor:pointer;font-family:inherit;margin-bottom:10px;box-shadow:0 4px 20px rgba(139,92,246,0.28);transition:all 0.2s;letter-spacing:0.01em;}
+.buy-btn-purple:hover{opacity:0.9;transform:translateY(-1px);}
+.buy-btn-free{width:100%;padding:14px;background:var(--green);color:#fff;font-size:0.82rem;font-weight:700;border:none;border-radius:9px;cursor:pointer;font-family:inherit;margin-bottom:10px;box-shadow:0 4px 20px rgba(46,204,142,0.3);transition:all 0.2s;letter-spacing:0.01em;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px;}
+.buy-btn-free:hover{opacity:0.9;transform:translateY(-1px);}
+.demo-btn{width:100%;padding:12px;background:rgba(255,255,255,0.05);color:var(--text);font-size:0.76rem;font-weight:600;border:1px solid var(--border2);border-radius:9px;cursor:pointer;font-family:inherit;margin-bottom:10px;text-decoration:none;display:block;text-align:center;transition:all 0.2s;}
+.demo-btn:hover{background:rgba(255,255,255,0.09);}
+.wa-btn{width:100%;padding:12px;background:var(--green-dim);border:1px solid rgba(46,204,142,0.2);color:var(--green);font-size:0.75rem;font-weight:700;border-radius:9px;cursor:pointer;font-family:inherit;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:7px;transition:background 0.2s;}
+.wa-btn:hover{background:rgba(46,204,142,0.14);}
+.secure-row{display:flex;align-items:center;justify-content:center;gap:5px;margin-top:14px;font-size:0.61rem;color:var(--text3);font-weight:500;}
+.free-note{background:var(--green-dim);border:1px solid rgba(46,204,142,0.2);border-radius:10px;padding:14px 16px;margin-bottom:18px;font-size:0.73rem;color:var(--green);line-height:1.65;}
+.free-note strong{display:block;margin-bottom:4px;font-size:0.75rem;}
+.live-site-note{background:var(--purple-dim);border:1px solid var(--purple-border);border-radius:10px;padding:14px 16px;margin-bottom:14px;font-size:0.72rem;color:#c4b5fd;line-height:1.65;}
+.live-site-note strong{display:block;margin-bottom:4px;font-size:0.73rem;}
+
+/* ── PAY STEPS ── */
+.pay-step{display:none;}
+.pay-step.active{display:block;}
+.pay-step-header{font-size:0.8rem;font-weight:700;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.pay-step-header .step-circle{width:22px;height:22px;border-radius:50%;background:var(--teal-dim);border:1px solid var(--teal-border);font-size:0.65rem;font-weight:700;color:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.pay-input{width:100%;padding:10px 13px;background:var(--navy3);border:1px solid var(--border2);border-radius:8px;color:var(--text);font-size:0.78rem;font-family:inherit;margin-bottom:12px;outline:none;transition:border-color 0.2s;}
+.pay-input:focus{border-color:var(--teal-border);}
+.pay-input::placeholder{color:var(--text3);}
+.upload-zone{border:1.5px dashed var(--border2);border-radius:10px;padding:20px;text-align:center;cursor:pointer;transition:all 0.2s;margin-bottom:12px;position:relative;}
+.upload-zone:hover{border-color:var(--teal-border);background:var(--teal-dim);}
+.upload-zone input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.upload-zone-icon{font-size:1.6rem;margin-bottom:6px;}
+.upload-zone-text{font-size:0.72rem;color:var(--text2);}
+.upload-preview{width:100%;border-radius:8px;border:1px solid var(--border);margin-bottom:12px;display:none;max-height:140px;object-fit:cover;}
+.wa-send-btn{width:100%;padding:13px;background:#25d366;color:#fff;font-size:0.80rem;font-weight:700;border:none;border-radius:9px;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:7px;transition:opacity 0.2s;}
+.wa-send-btn:hover{opacity:0.88;}
+.pay-note{font-size:0.65rem;color:var(--text3);text-align:center;margin-top:8px;line-height:1.6;}
+.pay-success-box{text-align:center;padding:8px 0;}
+.pay-success-box .big-emoji{font-size:2.2rem;margin-bottom:10px;}
+.pay-success-title{font-size:0.9rem;font-weight:700;color:var(--text);margin-bottom:6px;}
+.pay-success-sub{font-size:0.71rem;color:var(--text2);line-height:1.7;}
+
+/* ── MOBILE BOTTOM BAR ── */
+.mobile-cta-bar{display:flex;position:fixed;bottom:0;left:0;right:0;background:var(--navy2);border-top:1px solid var(--border2);padding:12px 16px;gap:10px;z-index:100;}
+@media(min-width:768px){.mobile-cta-bar{display:none;}}
+.mobile-cta-bar .buy-btn,.mobile-cta-bar .buy-btn-free,.mobile-cta-bar .buy-btn-gold,.mobile-cta-bar .buy-btn-purple{margin-bottom:0;flex:1;}
+.mobile-cta-bar .wa-btn{flex-shrink:0;width:auto;padding:12px 16px;}
+
+/* ── FOOTER ── */
+.footer-wrap{border-top:1px solid var(--border);background:var(--navy2);padding:52px 20px 32px;position:relative;z-index:1;}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:32px;padding-bottom:36px;border-bottom:1px solid var(--border);}
+@media(min-width:768px){.footer-inner{grid-template-columns:1.6fr 1fr 1fr;}}
+@media(min-width:1000px){.footer-inner{grid-template-columns:1.6fr 1fr 1fr 1fr;}}
+.footer-brand{grid-column:1/-1;}
+@media(min-width:768px){.footer-brand{grid-column:auto;}}
+.footer-logo{display:flex;align-items:center;gap:9px;text-decoration:none;margin-bottom:14px;}
+.footer-logo-mark{width:28px;height:28px;border-radius:7px;background:linear-gradient(135deg,#006e67,var(--teal));display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;font-weight:800;flex-shrink:0;}
+.footer-logo-text{font-size:0.88rem;font-weight:700;color:var(--text);}
+.footer-logo-text span{color:var(--teal);}
+.footer-about{font-size:0.75rem;color:var(--text2);line-height:1.75;margin-bottom:20px;}
+.social-row{display:flex;gap:8px;flex-wrap:wrap;}
+.social-btn{width:34px;height:34px;border-radius:8px;background:var(--surface2);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all 0.2s;flex-shrink:0;}
+.social-btn:hover{border-color:var(--teal-border);background:var(--teal-dim);}
+.social-btn svg{width:15px;height:15px;}
+.footer-col-title{font-size:0.66rem;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--text);margin-bottom:16px;}
+.footer-links-col{list-style:none;}
+.footer-links-col li{margin-bottom:10px;}
+.footer-links-col a{font-size:0.76rem;color:var(--text2);text-decoration:none;transition:color 0.2s;font-weight:500;}
+.footer-links-col a:hover{color:var(--teal);}
+.footer-bottom{max-width:1200px;margin:24px auto 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.footer-copy{font-size:0.63rem;color:var(--text3);font-weight:500;}
+.footer-tagline{font-size:0.63rem;color:var(--text3);}
+
+/* ── MODAL ── */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:999;align-items:center;justify-content:center;padding:16px;}
+.modal.show{display:flex;}
+.modal-box{background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:36px 24px;text-align:center;max-width:400px;width:100%;box-shadow:0 24px 80px rgba(0,0,0,0.6),0 0 0 1px rgba(0,194,179,0.1);}
+.modal-icon{font-size:2.6rem;margin-bottom:14px;}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:600;color:var(--text);margin-bottom:7px;letter-spacing:-0.02em;}
+.modal-sub{font-size:0.77rem;color:var(--text2);line-height:1.9;margin-bottom:24px;}
+.modal-wa{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;background:var(--green);color:#fff;text-decoration:none;border-radius:9px;font-size:0.8rem;font-weight:700;margin-bottom:12px;transition:opacity 0.2s;}
+.modal-wa:hover{opacity:0.88;}
+.modal-close{font-size:0.7rem;color:var(--text3);cursor:pointer;background:none;border:none;font-family:inherit;margin-top:8px;}
+
+/* ── ADMIN ── */
+.admin-page{display:none;position:fixed;inset:0;background:var(--navy);z-index:500;overflow-y:auto;}
+.admin-page.show{display:block;}
+.admin-topbar{position:sticky;top:0;z-index:10;height:52px;background:rgba(20,23,32,0.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 20px;display:flex;align-items:center;justify-content:space-between;}
+.admin-title-bar{font-size:0.85rem;font-weight:700;color:var(--teal);}
+.admin-inner{max-width:1000px;margin:0 auto;padding:32px 20px 80px;}
+.admin-section-title{font-size:0.65rem;font-weight:700;letter-spacing:0.12em;color:var(--teal);text-transform:uppercase;margin-bottom:16px;}
+.admin-tabs{display:flex;gap:8px;margin-bottom:28px;border-bottom:1px solid var(--border);padding-bottom:0;}
+.admin-tab{font-size:0.74rem;font-weight:600;color:var(--text3);padding:10px 16px;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;background:none;border-top:none;border-left:none;border-right:none;font-family:inherit;}
+.admin-tab.active{color:var(--teal);border-bottom-color:var(--teal);}
+.admin-tab-content{display:none;}
+.admin-tab-content.active{display:block;}
+.order-card{background:var(--surface);border:1px solid var(--border2);border-radius:12px;padding:18px;margin-bottom:14px;}
+.order-card-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;gap:12px;flex-wrap:wrap;}
+.order-card-name{font-size:0.85rem;font-weight:700;color:var(--text);}
+.order-card-time{font-size:0.65rem;color:var(--text3);}
+.order-card-template{font-size:0.72rem;color:var(--teal);background:var(--teal-dim);border:1px solid var(--teal-border);padding:3px 9px;border-radius:5px;display:inline-block;margin-bottom:8px;}
+.order-card-type{font-size:0.62rem;font-weight:700;padding:3px 9px;border-radius:5px;letter-spacing:0.05em;text-transform:uppercase;display:inline-block;margin-left:6px;}
+.order-card-type.code-type{background:var(--gold-dim);color:var(--gold);border:1px solid var(--gold-border);}
+.order-card-type.site-type{background:var(--purple-dim);color:#c4b5fd;border:1px solid var(--purple-border);}
+.order-card-wa{font-size:0.75rem;color:var(--green);text-decoration:none;display:flex;align-items:center;gap:5px;margin-top:6px;}
+.order-card-wa:hover{text-decoration:underline;}
+.order-screenshot{width:100%;max-width:260px;border-radius:8px;border:1px solid var(--border);margin-top:10px;display:block;}
+.order-status{font-size:0.63rem;font-weight:700;padding:3px 9px;border-radius:5px;letter-spacing:0.05em;text-transform:uppercase;}
+.order-status.pending{background:rgba(239,168,0,0.15);color:#efaa00;border:1px solid rgba(239,168,0,0.25);}
+.order-status.done{background:var(--green-dim);color:var(--green);border:1px solid rgba(46,204,142,0.25);}
+.order-mark-btn{font-size:0.65rem;font-weight:700;color:var(--green);background:var(--green-dim);border:1px solid rgba(46,204,142,0.25);padding:5px 11px;border-radius:6px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+.order-mark-btn:hover{background:rgba(46,204,142,0.16);}
+.orders-empty{text-align:center;padding:48px 0;font-size:0.8rem;color:var(--text3);}
+.admin-stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px;}
+.admin-stat-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;}
+.admin-stat-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--text);}
+.admin-stat-label{font-size:0.63rem;color:var(--text2);margin-top:3px;}
+.admin-clear-btn{font-size:0.65rem;font-weight:700;color:#e55;background:rgba(230,80,80,0.08);border:1px solid rgba(230,80,80,0.2);padding:6px 13px;border-radius:6px;cursor:pointer;font-family:inherit;}
+.admin-clear-btn:hover{background:rgba(230,80,80,0.16);}
+
+/* ── TEMPLATE MANAGER ── */
+.template-form{background:var(--surface);border:1px solid var(--border2);border-radius:14px;padding:22px;margin-bottom:24px;}
+.template-form-title{font-size:0.78rem;font-weight:700;color:var(--text);margin-bottom:16px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+@media(max-width:640px){.form-row{grid-template-columns:1fr;}}
+.form-group{margin-bottom:12px;}
+.form-label{font-size:0.63rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--text2);margin-bottom:6px;display:block;}
+.form-input{width:100%;padding:10px 13px;background:var(--navy3);border:1px solid var(--border2);border-radius:8px;color:var(--text);font-size:0.78rem;font-family:inherit;outline:none;transition:border-color 0.2s;}
+.form-input:focus{border-color:var(--teal-border);}
+.form-input::placeholder{color:var(--text3);}
+.form-textarea{width:100%;padding:10px 13px;background:var(--navy3);border:1px solid var(--border2);border-radius:8px;color:var(--text);font-size:0.78rem;font-family:inherit;outline:none;resize:vertical;min-height:80px;transition:border-color 0.2s;}
+.form-textarea:focus{border-color:var(--teal-border);}
+.form-textarea::placeholder{color:var(--text3);}
+.form-select{width:100%;padding:10px 13px;background:var(--navy3);border:1px solid var(--border2);border-radius:8px;color:var(--text);font-size:0.78rem;font-family:inherit;outline:none;cursor:pointer;}
+.form-submit-btn{padding:11px 20px;background:var(--teal2);color:#fff;font-size:0.76rem;font-weight:700;border:none;border-radius:8px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+.form-submit-btn:hover{background:var(--teal);}
+.form-submit-btn:disabled{opacity:0.5;cursor:not-allowed;}
+.template-admin-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:12px;display:flex;align-items:center;gap:14px;}
+.template-admin-thumb{width:56px;height:56px;border-radius:8px;object-fit:cover;border:1px solid var(--border);flex-shrink:0;background:var(--navy3);}
+.template-admin-info{flex:1;min-width:0;}
+.template-admin-name{font-size:0.82rem;font-weight:700;color:var(--text);margin-bottom:3px;}
+.template-admin-meta{font-size:0.65rem;color:var(--text2);}
+.template-admin-actions{display:flex;gap:8px;flex-shrink:0;}
+.edit-btn{font-size:0.65rem;font-weight:700;color:var(--teal);background:var(--teal-dim);border:1px solid var(--teal-border);padding:5px 11px;border-radius:6px;cursor:pointer;font-family:inherit;}
+.delete-btn{font-size:0.65rem;font-weight:700;color:#e55;background:rgba(230,80,80,0.08);border:1px solid rgba(230,80,80,0.2);padding:5px 11px;border-radius:6px;cursor:pointer;font-family:inherit;}
+.img-upload-preview{width:100%;max-height:120px;object-fit:cover;border-radius:8px;border:1px solid var(--border);margin-top:8px;display:none;}
+.save-status{font-size:0.7rem;color:var(--green);margin-top:8px;display:none;}
+
+/* ── ADMIN LOGIN ── */
+.admin-login{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:600;align-items:center;justify-content:center;padding:20px;}
+.admin-login.show{display:flex;}
+.admin-login-box{background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:32px 28px;max-width:340px;width:100%;text-align:center;}
+.admin-login-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--text);margin-bottom:6px;}
+.admin-login-sub{font-size:0.72rem;color:var(--text2);margin-bottom:22px;}
+.admin-login-input{width:100%;padding:11px 14px;background:var(--navy3);border:1px solid var(--border2);border-radius:8px;color:var(--text);font-size:0.8rem;font-family:inherit;margin-bottom:12px;outline:none;text-align:center;letter-spacing:0.15em;}
+.admin-login-input:focus{border-color:var(--teal-border);}
+.admin-login-btn{width:100%;padding:12px;background:var(--teal2);color:#fff;font-size:0.78rem;font-weight:700;border:none;border-radius:8px;cursor:pointer;font-family:inherit;transition:all 0.2s;}
+.admin-login-btn:hover{background:var(--teal);}
+.admin-login-err{font-size:0.68rem;color:#e55;margin-top:8px;display:none;}
+
+/* ── LOADING SPINNER ── */
+.loading-state{text-align:center;padding:48px 20px;color:var(--text2);font-size:0.8rem;}
+.spinner{width:28px;height:28px;border:2.5px solid var(--border2);border-top-color:var(--teal);border-radius:50%;animation:spin 0.7s linear infinite;margin:0 auto 12px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <a class="nav-logo" href="#" onclick="showHome();return false;">
+    <div class="nav-logo-mark">M</div>
+    <span class="nav-logo-text">Make Your <span>Moment</span></span>
+  </a>
+  <div class="nav-right">
+    <a class="nav-link" href="#templates" onclick="document.getElementById('templates').scrollIntoView({behavior:'smooth'});return false;">Templates</a>
+    <a class="nav-link" href="#how">How it works</a>
+    <a class="nav-wa" href="https://wa.me/918746094620?text=Hi!%20I%20want%20to%20know%20more%20about%20your%20invitation%20templates" target="_blank">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</nav>
+
+<!-- ══ HOME ══ -->
+<div id="homePage">
+  <section class="hero" id="home">
+    <div class="hero-glow"></div>
+    <div class="hero-pill"><div class="hero-pill-dot"></div>Digital Surprise · Starting ₹39</div>
+    <h1 class="hero-title">Designed for your most<br><em>meaningful moments</em></h1>
+    <p class="hero-sub">Premium animated digital surprises — personalised with your name, photos &amp; message. Share as a link in seconds.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#templates" onclick="document.getElementById('templates').scrollIntoView({behavior:'smooth'});return false;">Browse Templates<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a class="btn-ghost" href="https://wa.me/918746094620" target="_blank">Ask on WhatsApp</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num" id="templateCount">—</span><span class="stat-label">Templates</span></div>
+      <div class="stat"><span class="stat-num">₹39</span><span class="stat-label">Starting price</span></div>
+      <div class="stat"><span class="stat-num">24h</span><span class="stat-label">Delivery</span></div>
+    </div>
+  </section>
+
+  <div class="trust-bar">
+    <div class="trust-item"><svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Secure Razorpay payment</div>
+    <div class="trust-item"><svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Delivered in 24 hours</div>
+    <div class="trust-item"><svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>WhatsApp support</div>
+    <div class="trust-item"><svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>Mobile optimised</div>
+  </div>
+
+  <section class="section" id="templates">
+    <div class="section-eyebrow">Templates</div>
+    <div class="section-title">Choose your template</div>
+    <div class="section-sub">Every template is personalised with your name, photos, date and message.</div>
+    <div class="templates-grid" id="templatesGrid">
+      <div class="loading-state"><div class="spinner"></div>Loading templates…</div>
+    </div>
+  </section>
+
+  <div class="how-section" id="how">
+    <div class="how-inner">
+      <div style="text-align:center;">
+        <div class="section-eyebrow" style="text-align:center;">Process</div>
+        <div class="section-title" style="text-align:center;">How it works</div>
+      </div>
+      <div class="steps-grid">
+        <div class="step"><div class="step-num">1</div><div class="step-title">Pick &amp; Choose</div><div class="step-desc">Pick a template and choose Source Code or We Build It for you.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-title">Pay &amp; WhatsApp</div><div class="step-desc">Pay securely, then WhatsApp your name, date, photos &amp; message.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-title">We Personalise</div><div class="step-desc">We build or deliver your personalised invite within 24 hours.</div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-title">Share &amp; Celebrate</div><div class="step-desc">Send your live link anywhere — and surprise them!</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-wrap">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="footer-logo" href="#" onclick="showHome();return false;">
+          <div class="footer-logo-mark">M</div>
+          <span class="footer-logo-text">Make Your <span>Moment</span></span>
+        </a>
+        <p class="footer-about">Hi, I'm Ramya — a web developer creating premium digital surprises, templates and fully responsive live websites.</p>
+        <div class="social-row">
+          <a class="social-btn" href="https://www.instagram.com/makeyourmoment01?igsh=MWh4NzF6Yml1dDl4cg==" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:15px;height:15px;color:var(--text2);"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg></a>
+          <a class="social-btn" href="https://wa.me/918746094620" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor" style="width:15px;height:15px;color:var(--text2);"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        </div>
+      </div>
+      <div><div class="footer-col-title">Templates</div><ul class="footer-links-col" id="footerTemplateLinks"></ul></div>
+      <div><div class="footer-col-title">Contact</div><ul class="footer-links-col"><li><a href="https://wa.me/918746094620" target="_blank">WhatsApp</a></li><li><a href="https://www.instagram.com/makeyourmoment01?igsh=MWh4NzF6Yml1dDl4cg==" target="_blank">Instagram DM</a></li><li><a href="mailto:makeyourmoments01@gmail.com">Email Us</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Make Your Moment · makeyourmoment.in</span>
+      <span class="footer-tagline">Memories you'll marvel at ✦</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PRODUCT PAGE ══ -->
+<div class="product-page" id="productPage">
+  <div class="product-topbar">
+    <button class="back-btn" onclick="showHome()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Back</button>
+    <span class="topbar-title" id="topbarTitle"></span>
+  </div>
+  <div class="product-inner">
+    <div id="productTag" class="product-tag"></div>
+    <div id="productTitle" class="product-title"></div>
+    <div id="productDesc" class="product-desc"></div>
+    <div class="product-layout">
+      <div>
+        <div class="product-preview-wrap">
+          <img id="productImage" src="" alt="Template preview"/>
+          <div class="product-preview-overlay"></div>
+          <div id="productEmojiOverlay" class="product-emoji-overlay"></div>
+        </div>
+        <div class="included-label">What's included</div>
+        <ul class="included-list" id="includedList"></ul>
+      </div>
+      <div class="buy-box" id="buyBox"></div>
+    </div>
+  </div>
+  <div class="mobile-cta-bar" id="mobileCta"></div>
+</div>
+
+<!-- ══ ADMIN LOGIN ══ -->
+<div class="admin-login" id="adminLogin">
+  <div class="admin-login-box">
+    <div style="font-size:1.8rem;margin-bottom:10px;">🔐</div>
+    <div class="admin-login-title">Admin Access</div>
+    <div class="admin-login-sub">Enter your password to manage templates &amp; orders</div>
+    <input class="admin-login-input" type="password" id="adminPwInput" placeholder="Password" onkeydown="if(event.key==='Enter')checkAdminPw()"/>
+    <button class="admin-login-btn" onclick="checkAdminPw()">Login →</button>
+    <div class="admin-login-err" id="adminPwErr">Wrong password. Try again.</div>
+    <button style="font-size:0.65rem;color:var(--text3);background:none;border:none;cursor:pointer;margin-top:14px;font-family:inherit;" onclick="document.getElementById('adminLogin').classList.remove('show')">Cancel</button>
+  </div>
+</div>
+
+<!-- ══ ADMIN PANEL ══ -->
+<div class="admin-page" id="adminPage">
+  <div class="admin-topbar">
+    <span class="admin-title-bar">🛠 Admin — Make Your Moment</span>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <button class="back-btn" onclick="closeAdmin()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Exit</button>
+    </div>
+  </div>
+  <div class="admin-inner">
+    <div class="admin-stats-row">
+      <div class="admin-stat-card"><div class="admin-stat-num" id="adminTotalOrders">—</div><div class="admin-stat-label">Total orders</div></div>
+      <div class="admin-stat-card"><div class="admin-stat-num" id="adminPending">—</div><div class="admin-stat-label">Pending</div></div>
+      <div class="admin-stat-card"><div class="admin-stat-num" id="adminDone">—</div><div class="admin-stat-label">Done</div></div>
+    </div>
+    <div class="admin-tabs">
+      <button class="admin-tab active" onclick="switchAdminTab('orders',this)">📋 Orders</button>
+      <button class="admin-tab" onclick="switchAdminTab('templates',this)">🖼 Templates</button>
+    </div>
+
+    <!-- ORDERS TAB -->
+    <div class="admin-tab-content active" id="adminTabOrders">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+        <div class="admin-section-title" style="margin-bottom:0;">All Orders</div>
+        <button class="admin-clear-btn" onclick="clearAllOrders()">Clear all</button>
+      </div>
+      <div id="adminOrdersList"><div class="loading-state"><div class="spinner"></div>Loading…</div></div>
+    </div>
+
+    <!-- TEMPLATES TAB -->
+    <div class="admin-tab-content" id="adminTabTemplates">
+      <div class="template-form">
+        <div class="template-form-title" id="formTitle">➕ Add New Template</div>
+        <input type="hidden" id="editTemplateId"/>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Badge / Category</label>
+            <input class="form-input" id="fBadge" placeholder="Birthday project 1"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Emoji</label>
+            <input class="form-input" id="fEmoji" placeholder="🎂"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Template Title</label>
+          <input class="form-input" id="fTitle" placeholder="Birthday Invitation"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Short Description (card)</label>
+          <input class="form-input" id="fShortDesc" placeholder="Animated invite with slideshow…"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Full Description (product page)</label>
+          <textarea class="form-textarea" id="fDesc" placeholder="Longer description here…"></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Type</label>
+            <select class="form-select" id="fType" onchange="togglePriceFields()">
+              <option value="free">Free (WhatsApp)</option>
+              <option value="paid">Paid</option>
+            </select>
+          </div>
+          <div class="form-group" id="priceGroup" style="display:none;">
+            <label class="form-label">Source Code Price (₹)</label>
+            <input class="form-input" id="fPrice" type="number" placeholder="39"/>
+          </div>
+        </div>
+        <div class="form-group" id="livePriceGroup" style="display:none;">
+          <label class="form-label">Live Site Price (₹)</label>
+          <input class="form-input" id="fLivePrice" type="number" placeholder="99"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Demo URL</label>
+          <input class="form-input" id="fDemoUrl" placeholder="https://…"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Image URL (direct link)</label>
+          <input class="form-input" id="fImageUrl" placeholder="https://… or leave blank"/>
+          <img id="imgPreview" class="img-upload-preview"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">What's Included (one per line)</label>
+          <textarea class="form-textarea" id="fIncluded" placeholder="Animated sparkles intro&#10;Live countdown&#10;Photo slideshow"></textarea>
+        </div>
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+          <button class="form-submit-btn" id="saveTemplateBtn" onclick="saveTemplate()">Save Template →</button>
+          <button style="font-size:0.68rem;color:var(--text3);background:none;border:none;cursor:pointer;font-family:inherit;" onclick="resetTemplateForm()">Reset form</button>
+          <div class="save-status" id="saveStatus">✅ Saved!</div>
+        </div>
+      </div>
+
+      <div class="admin-section-title">Existing Templates</div>
+      <div id="adminTemplatesList"><div class="loading-state"><div class="spinner"></div>Loading…</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Secret admin trigger -->
+<div id="adminTapZone" style="position:fixed;bottom:0;right:0;width:40px;height:40px;z-index:999;opacity:0;cursor:default;"></div>
+
+<script>
+const WA_NUMBER    = '918746094620';
+const RAZORPAY_KEY = 'rzp_live_SepJByE74U3kXf';
+const ADMIN_PASSWORD = 'ramya2026';
+
+// ── STATE ──
+let current = null;
+let currentOption = 'code'; // 'code' or 'site'
+let currentPaymentId = null;
+let screenshotDataUrl = null;
+let templates = [];
+let fbReady = false;
+
+// ── WAIT FOR FIREBASE ──
+function waitForFb(cb){
+  if(window._fbReady){ cb(); }
+  else { window.addEventListener('fb-ready', cb, {once:true}); }
+}
+
+// ── FIREBASE HELPERS ──
+async function fbGetTemplates(){
+  try {
+    const {collection, getDocs, query, orderBy} = window._fbFns;
+    const q = query(collection(window._fbDb,'templates'), orderBy('order','asc'));
+    const snap = await getDocs(q);
+    return snap.docs.map(d => ({id: d.id, ...d.data()}));
+  } catch(e){
+    console.warn('Firebase error, using fallback:', e);
+    return getFallbackTemplates();
+  }
+}
+
+async function fbGetOrders(){
+  try {
+    const {collection, getDocs, query, orderBy} = window._fbFns;
+    const q = query(collection(window._fbDb,'orders'), orderBy('timestamp','desc'));
+    const snap = await getDocs(q);
+    return snap.docs.map(d => ({id: d.id, ...d.data()}));
+  } catch(e){
+    return getLocalOrders();
+  }
+}
+
+async function fbAddOrder(orderData){
+  try {
+    const {collection, addDoc} = window._fbFns;
+    await addDoc(collection(window._fbDb,'orders'), {...orderData, timestamp: Date.now()});
+  } catch(e){
+    saveLocalOrder(orderData);
+  }
+}
+
+async function fbMarkOrderDone(orderId){
+  try {
+    const {doc, updateDoc} = window._fbFns;
+    await updateDoc(doc(window._fbDb,'orders',orderId), {status:'done'});
+  } catch(e){
+    markLocalOrderDone(orderId);
+  }
+}
+
+async function fbDeleteAllOrders(){
+  try {
+    const {collection, getDocs, deleteDoc, doc} = window._fbFns;
+    const snap = await getDocs(collection(window._fbDb,'orders'));
+    for(const d of snap.docs){ await deleteDoc(doc(window._fbDb,'orders',d.id)); }
+  } catch(e){ clearLocalOrders(); }
+}
+
+async function fbSaveTemplate(data, id=null){
+  try {
+    const {collection, addDoc, doc, updateDoc} = window._fbFns;
+    if(id){
+      await updateDoc(doc(window._fbDb,'templates',id), data);
+    } else {
+      await addDoc(collection(window._fbDb,'templates'), {...data, order: Date.now()});
+    }
+    return true;
+  } catch(e){ console.error('Firebase save error:', e); return false; }
+}
+
+async function fbDeleteTemplate(id){
+  try {
+    const {doc, deleteDoc} = window._fbFns;
+    await deleteDoc(doc(window._fbDb,'templates',id));
+    return true;
+  } catch(e){ return false; }
+}
+
+// ── LOCAL STORAGE FALLBACK ──
+function getLocalOrders(){ try{ return JSON.parse(localStorage.getItem('mym_orders')||'[]'); }catch(e){ return []; } }
+function saveLocalOrder(o){ const arr = getLocalOrders(); arr.unshift({...o, id:'local_'+Date.now()}); localStorage.setItem('mym_orders', JSON.stringify(arr)); }
+function markLocalOrderDone(id){ const arr = getLocalOrders(); const i=arr.findIndex(x=>x.id===id); if(i>-1){arr[i].status='done';localStorage.setItem('mym_orders',JSON.stringify(arr));} }
+function clearLocalOrders(){ localStorage.removeItem('mym_orders'); }
+
+function getFallbackTemplates(){
+  return [
+    {id:'birthday1',badge:'Birthday project 1',emoji:'🎂',image:'p1.jpeg',title:'Birthday Invitation',shortDesc:'Animated intro, photo slideshow, live birthday counter & heartfelt personal letter.',desc:'A magical animated birthday invitation your loved one will never forget.',demoUrl:'https://makeyourmoments01-stack.github.io/p2/',isFree:true,included:['Animated sparkles intro','Live birthday countdown','Photo slideshow (4 photos)','Typewriter wish message','Personal letter','Birthday video','Background music','Mobile optimised & shareable link'],waMsg:'Hi! I want the free Birthday Invitation 🎂\nMy details:\nName: \nContact: '},
+    {id:'birthday2',badge:'Birthday project 2',emoji:'🎂',image:'p2.jpeg',title:'Birthday Invitation',shortDesc:'Animated intro, photo slideshow, live birthday counter & heartfelt personal letter.',desc:'A magical animated birthday invitation — with live countdown, slideshow and personal letter.',demoUrl:'https://mymproject3.netlify.app',isFree:false,price:39,livePrice:99,included:['Animated sparkles intro','Live birthday countdown','Photo slideshow (4 photos)','Typewriter wish message','Personal letter','Birthday video','Background music','Mobile optimised & shareable link'],waMsg:'Hi! I just paid for Birthday Invitation Project 2 🎂\nMy WhatsApp: {WANUM}\n[Screenshot attached]\nPlease send my source code.'}
+  ];
+}
+
+// ── LOAD & RENDER CARDS ──
+async function loadAndRenderCards(){
+  waitForFb(async ()=>{
+    templates = await fbGetTemplates();
+    if(!templates.length) templates = getFallbackTemplates();
+    renderCards();
+  });
+}
+
+function renderCards(){
+  const grid   = document.getElementById('templatesGrid');
+  const footer = document.getElementById('footerTemplateLinks');
+  document.getElementById('templateCount').textContent = templates.length;
+  grid.innerHTML = '';
+  footer.innerHTML = '';
+  templates.forEach(t => {
+    const c = document.createElement('div');
+    c.className = 'template-card';
+    c.onclick = () => showProduct(t.id);
+    const priceHtml = t.isFree
+      ? `<div class="card-price-free">🎁 Free via WhatsApp</div>`
+      : `<div class="card-price">₹${t.price} <small>code</small></div>`;
+    const ctaHtml = t.isFree
+      ? `<button class="card-cta-green">Get Free →</button>`
+      : `<button class="card-cta">View →</button>`;
+    const badge = t.isFree
+      ? `<span class="card-free-badge">FREE</span>`
+      : `<span class="card-paid-badge">from ₹${t.price}</span>`;
+    c.innerHTML = `
+      <div class="card-preview">
+        <img src="${t.image||'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22/>'}" alt="${t.title}" loading="lazy" onerror="this.style.display='none'"/>
+        <span class="card-badge">${t.badge}</span>
+        ${badge}
+        <div class="card-preview-emoji">${t.emoji||'✨'}</div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">${t.title}</div>
+        <div class="card-desc">${t.shortDesc||''}</div>
+        <div class="card-footer">${priceHtml}${ctaHtml}</div>
+      </div>`;
+    grid.appendChild(c);
+    const li = document.createElement('li');
+    const a  = document.createElement('a');
+    a.href='#'; a.textContent=t.badge||t.title;
+    a.onclick=e=>{e.preventDefault();showProduct(t.id);};
+    li.appendChild(a); footer.appendChild(li);
+  });
+}
+
+// ── BUILD BUY BOX ──
+function buildBuyBox(t){
+  if(t.isFree){
+    const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(t.waMsg||'')}`;
+    return `
+      <div class="free-note"><strong>🎁 This template is free!</strong>WhatsApp us your name, date, photos &amp; message — we'll build it for you free.</div>
+      <a class="buy-btn-free" href="${waUrl}" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Order on WhatsApp — Free!</a>
+      <a class="demo-btn" href="${t.demoUrl}" target="_blank">View Live Demo →</a>`;
+  }
+
+  // PAID: show option picker + context-sensitive flow
+  return `
+    <div class="option-picker">
+      <div class="option-picker-label">Choose what you need</div>
+      <div class="option-cards">
+        <div class="option-card selected-code" id="optCode" onclick="selectOption('code')">
+          <div class="option-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 6l3 3 5-5"/></svg></div>
+          <div class="option-card-icon">💻</div>
+          <div class="option-card-name">Source Code</div>
+          <div class="option-card-price">₹${t.price}</div>
+          <div class="option-card-desc">Get the full HTML/CSS/JS source. Host it yourself.</div>
+        </div>
+        <div class="option-card" id="optSite" onclick="selectOption('site')">
+          <div class="option-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 6l3 3 5-5"/></svg></div>
+          <div class="option-card-icon">🌐</div>
+          <div class="option-card-name">We Build It</div>
+          <div class="option-card-price" style="color:var(--purple);">₹${t.livePrice||99}</div>
+          <div class="option-card-desc">We personalise &amp; host your live site. Just share the link!</div>
+        </div>
+      </div>
+    </div>
+    <div class="buy-divider"></div>
+    <div id="optionContent">${buildOptionContent('code', t)}</div>
+    <a class="demo-btn" href="${t.demoUrl}" target="_blank" style="margin-top:8px;">View Live Demo →</a>
+    <div class="secure-row"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>Secured by Razorpay</div>`;
+}
+
+function buildOptionContent(option, t){
+  if(option === 'code'){
+    return `
+      <div id="codeInstructions" class="code-instructions">
+        <div class="code-instr-title">📘 What you get &amp; how to use it</div>
+        <ul class="code-instr-list">
+          <li><span class="dot"></span>You receive a <strong style="color:var(--text);">ZIP file</strong> with all HTML, CSS &amp; JS files</li>
+          <li><span class="dot"></span>Open <strong style="color:var(--text);">index.html</strong> in any browser — it works offline too</li>
+          <li><span class="dot"></span>Edit your name, date &amp; message in the <strong style="color:var(--text);">HTML file</strong> (look for the text in quotes)</li>
+          <li><span class="dot"></span>Replace photos by swapping image files or updating image <strong style="color:var(--text);">src="" links</strong></li>
+          <li><span class="dot"></span>Host free on <strong style="color:var(--text);">Netlify, Vercel or GitHub Pages</strong> — no coding needed, just drag &amp; drop</li>
+          <li><span class="dot"></span>Basic knowledge of <strong style="color:var(--text);">opening files &amp; editing text</strong> is all you need</li>
+          <li><span class="dot"></span>We provide a <strong style="color:var(--text);">step-by-step guide</strong> with your delivery on WhatsApp</li>
+        </ul>
+      </div>
+      <div id="payStepContainer">${buildCodePaySteps(t)}</div>`;
+  } else {
+    const waMsg = `Hi! I want the Live Site service for ${t.badge||t.title} 🌐\nMy details:\nName: \nOccasion date: \nPhotos: (I'll send 3-4 photos)\nPersonal message: \n\nPlease send me the payment link!`;
+    const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(waMsg)}`;
+    return `
+      <div class="live-site-note">
+        <strong>🌐 We Build Your Live Site — ₹${t.livePrice||99}</strong>
+        We personalise everything &amp; host it for you. You get a shareable link within 24 hours — no tech skills needed!
+      </div>
+      <div style="background:var(--navy3);border:1px solid var(--border2);border-radius:10px;padding:14px;margin-bottom:14px;">
+        <div style="font-size:0.63rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text2);margin-bottom:10px;">How it works for Live Site</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;gap:10px;align-items:flex-start;"><div style="width:22px;height:22px;border-radius:50%;background:var(--purple-dim);border:1px solid var(--purple-border);font-size:0.6rem;font-weight:700;color:#c4b5fd;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div><div style="font-size:0.72rem;color:var(--text2);line-height:1.5;"><strong style="color:var(--text);">WhatsApp us first</strong> — send your name, date, photos &amp; personal message</div></div>
+          <div style="display:flex;gap:10px;align-items:flex-start;"><div style="width:22px;height:22px;border-radius:50%;background:var(--purple-dim);border:1px solid var(--purple-border);font-size:0.6rem;font-weight:700;color:#c4b5fd;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div><div style="font-size:0.72rem;color:var(--text2);line-height:1.5;"><strong style="color:var(--text);">We send you a payment link</strong> for ₹${t.livePrice||99} after reviewing your details</div></div>
+          <div style="display:flex;gap:10px;align-items:flex-start;"><div style="width:22px;height:22px;border-radius:50%;background:var(--purple-dim);border:1px solid var(--purple-border);font-size:0.6rem;font-weight:700;color:#c4b5fd;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div><div style="font-size:0.72rem;color:var(--text2);line-height:1.5;"><strong style="color:var(--text);">Pay &amp; receive</strong> your live shareable link within 24 hours!</div></div>
+        </div>
+      </div>
+      <a class="buy-btn-purple" href="${waUrl}" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp Us to Get Started →
+      </a>`;
+  }
+}
+
+function buildCodePaySteps(t){
+  return `
+    <div class="pay-step active" id="ps1">
+      <button class="buy-btn-gold" onclick="openRazorpay()">Pay ₹${t.price} — Get Source Code</button>
+    </div>
+    <div class="pay-step" id="ps2">
+      <div class="pay-step-header"><div class="step-circle">2</div>Upload your payment screenshot</div>
+      <p style="font-size:0.69rem;color:var(--text2);margin-bottom:14px;line-height:1.6;">Payment received! Upload your screenshot &amp; we'll send the source code to your WhatsApp.</p>
+      <input class="pay-input" type="tel" id="customerWaNum" placeholder="Your WhatsApp number (e.g. 91XXXXXXXXXX)"/>
+      <div class="upload-zone" onclick="document.getElementById('ssUpload').click()">
+        <input type="file" id="ssUpload" accept="image/*" onchange="previewScreenshot(this)"/>
+        <div class="upload-zone-icon">📸</div>
+        <div class="upload-zone-text" id="uploadLabel">Tap to upload payment screenshot</div>
+      </div>
+      <img id="ssPreview" class="upload-preview"/>
+      <button class="wa-send-btn" onclick="sendScreenshotWA()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Send Screenshot on WhatsApp
+      </button>
+      <div class="pay-note">WhatsApp opens — attach your screenshot &amp; tap Send.</div>
+    </div>
+    <div class="pay-step" id="ps3">
+      <div class="pay-success-box">
+        <div class="big-emoji">🎉</div>
+        <div class="pay-success-title">You're all set!</div>
+        <div class="pay-success-sub">WhatsApp opened. Attach your screenshot &amp; send — we'll reply with your source code within a few hours. Thank you! 💛</div>
+      </div>
+    </div>`;
+}
+
+function buildMobileCta(t){
+  if(t.isFree){
+    const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(t.waMsg||'')}`;
+    return `<a class="buy-btn-free" href="${waUrl}" target="_blank" style="font-size:0.78rem;padding:12px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp Order — Free!</a>
+    <a class="wa-btn" href="${t.demoUrl}" target="_blank" style="flex-shrink:0;width:auto;padding:12px 16px;color:var(--teal);background:var(--teal-dim);border-color:var(--teal-border);">Demo</a>`;
+  }
+  return `<button class="buy-btn-gold" onclick="openRazorpay()" style="font-size:0.76rem;padding:12px;">Pay ₹${t.price} — Source Code</button>
+  <a class="wa-btn" href="${t.demoUrl}" target="_blank" style="flex-shrink:0;width:auto;padding:12px 14px;color:var(--teal);background:var(--teal-dim);border-color:var(--teal-border);">Demo</a>`;
+}
+
+// ── OPTION SWITCHING ──
+function selectOption(opt){
+  currentOption = opt;
+  const codeCard = document.getElementById('optCode');
+  const siteCard = document.getElementById('optSite');
+  if(!codeCard || !siteCard) return;
+  codeCard.className = 'option-card' + (opt==='code'?' selected-code':'');
+  siteCard.className = 'option-card' + (opt==='site'?' selected-site':'');
+  const content = document.getElementById('optionContent');
+  if(content && current) content.innerHTML = buildOptionContent(opt, current);
+}
+
+// ── NAVIGATION ──
+function showHome(){
+  document.getElementById('homePage').style.display = 'block';
+  document.getElementById('productPage').classList.remove('show');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function showProduct(id){
+  const t = templates.find(x => x.id === id);
+  if(!t) return;
+  current = t;
+  currentOption = 'code';
+  currentPaymentId = null;
+  screenshotDataUrl = null;
+  document.getElementById('homePage').style.display = 'none';
+  document.getElementById('productPage').classList.add('show');
+  window.scrollTo({top:0,behavior:'instant'});
+  document.getElementById('productTag').textContent          = t.badge||'';
+  document.getElementById('productTitle').textContent        = t.title||'';
+  document.getElementById('productDesc').textContent         = t.desc||'';
+  document.getElementById('productImage').src                = t.image||'';
+  document.getElementById('productImage').alt                = t.title||'';
+  document.getElementById('productEmojiOverlay').textContent = t.emoji||'';
+  document.getElementById('topbarTitle').textContent         = t.title||'';
+  document.getElementById('buyBox').innerHTML   = buildBuyBox(t);
+  document.getElementById('mobileCta').innerHTML= buildMobileCta(t);
+  const included = Array.isArray(t.included) ? t.included : (t.included||'').split('\n').filter(Boolean);
+  document.getElementById('includedList').innerHTML = included.map(i=>`
+    <li><div class="check"><svg viewBox="0 0 12 12" fill="none" stroke="#00c2b3" stroke-width="2.2"><path d="M2 6l3 3 5-5"/></svg></div>${i}</li>`).join('');
+}
+
+// ── PAYMENT ──
+function openRazorpay(){
+  if(!current || current.isFree) return;
+  new Razorpay({
+    key: RAZORPAY_KEY,
+    amount: (current.price||39) * 100,
+    currency: 'INR',
+    name: 'Make Your Moment',
+    description: current.badge||current.title,
+    theme: {color:'#f5c542'},
+    handler: function(response){
+      currentPaymentId = response.razorpay_payment_id;
+      const ps1 = document.getElementById('ps1');
+      const ps2 = document.getElementById('ps2');
+      if(ps1) ps1.classList.remove('active');
+      if(ps2) ps2.classList.add('active');
+    }
+  }).open();
+}
+
+// ── SCREENSHOT ──
+function previewScreenshot(input){
+  if(!input.files||!input.files[0]) return;
+  const reader = new FileReader();
+  reader.onload = function(e){
+    screenshotDataUrl = e.target.result;
+    const prev = document.getElementById('ssPreview');
+    if(prev){prev.src=e.target.result;prev.style.display='block';}
+    const lbl = document.getElementById('uploadLabel');
+    if(lbl) lbl.textContent = '✅ '+input.files[0].name;
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+
+async function sendScreenshotWA(){
+  const waNumInput = document.getElementById('customerWaNum');
+  const waNum = waNumInput ? waNumInput.value.trim() : '';
+  if(!waNum){ alert('Please enter your WhatsApp number first!'); return; }
+  if(!screenshotDataUrl){ alert('Please upload your payment screenshot first!'); return; }
+  const orderData = {
+    template: current.badge||current.title,
+    templateId: current.id,
+    type: 'code',
+    waNumber: waNum,
+    paymentId: currentPaymentId||'manual',
+    screenshot: screenshotDataUrl,
+    time: new Date().toLocaleString('en-IN'),
+    status: 'pending'
+  };
+  await fbAddOrder(orderData);
+  const msg = (current.waMsg||'Hi! I paid. My WhatsApp: {WANUM}').replace('{WANUM}', waNum);
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+  const ps2 = document.getElementById('ps2');
+  const ps3 = document.getElementById('ps3');
+  if(ps2) ps2.classList.remove('active');
+  if(ps3) ps3.classList.add('active');
+}
+
+// ── ADMIN ──
+let adminTaps=0; let adminTapTimer=null;
+document.getElementById('adminTapZone').addEventListener('click', function(){
+  adminTaps++;
+  clearTimeout(adminTapTimer);
+  adminTapTimer = setTimeout(()=>{adminTaps=0;},1200);
+  if(adminTaps>=5){
+    adminTaps=0;
+    document.getElementById('adminLogin').classList.add('show');
+    document.getElementById('adminPwInput').value='';
+    document.getElementById('adminPwErr').style.display='none';
+    setTimeout(()=>document.getElementById('adminPwInput').focus(),100);
+  }
+});
+
+function checkAdminPw(){
+  const pw = document.getElementById('adminPwInput').value;
+  if(pw===ADMIN_PASSWORD){
+    document.getElementById('adminLogin').classList.remove('show');
+    openAdmin();
+  } else {
+    document.getElementById('adminPwErr').style.display='block';
+    document.getElementById('adminPwInput').value='';
+    document.getElementById('adminPwInput').focus();
+  }
+}
+
+function openAdmin(){
+  document.getElementById('adminPage').classList.add('show');
+  loadAdminData();
+}
+function closeAdmin(){
+  document.getElementById('adminPage').classList.remove('show');
+}
+function switchAdminTab(tab, btn){
+  document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.admin-tab-content').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('adminTab'+tab.charAt(0).toUpperCase()+tab.slice(1)).classList.add('active');
+}
+
+async function loadAdminData(){
+  waitForFb(async ()=>{
+    const orders = await fbGetOrders();
+    renderAdminOrders(orders);
+    const tmpl = await fbGetTemplates();
+    renderAdminTemplates(tmpl);
+  });
+}
+
+function renderAdminOrders(orders){
+  const pending = orders.filter(o=>o.status!=='done').length;
+  const done = orders.filter(o=>o.status==='done').length;
+  document.getElementById('adminTotalOrders').textContent = orders.length;
+  document.getElementById('adminPending').textContent = pending;
+  document.getElementById('adminDone').textContent = done;
+  const list = document.getElementById('adminOrdersList');
+  if(!orders.length){ list.innerHTML='<div class="orders-empty">No orders yet 🎉</div>'; return; }
+  list.innerHTML = orders.map((o,i)=>`
+    <div class="order-card">
+      <div class="order-card-header">
+        <div>
+          <div class="order-card-name">#${orders.length-i} — ${o.template||''}</div>
+          <div class="order-card-time">${o.time||''}</div>
+          <span class="order-card-template">${o.templateId||''}</span>
+          <span class="order-card-type ${o.type==='site'?'site-type':'code-type'}">${o.type==='site'?'Live Site':'Source Code'}</span>
+          ${o.paymentId&&o.paymentId!=='manual'?`<div style="font-size:0.65rem;color:var(--text3);margin-top:4px;">Payment: ${o.paymentId}</div>`:''}
+        </div>
+        <span class="order-status ${o.status==='done'?'done':'pending'}">${o.status==='done'?'Done':'Pending'}</span>
+      </div>
+      <a class="order-card-wa" href="https://wa.me/${(o.waNumber||'').replace(/\D/g,'')}" target="_blank">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        ${o.waNumber||'No number'}
+      </a>
+      ${o.screenshot?`<img class="order-screenshot" src="${o.screenshot}" alt="Screenshot"/>`:'<div style="font-size:0.7rem;color:var(--text3);margin-top:8px;">No screenshot</div>'}
+      ${o.status!=='done'?`<button class="order-mark-btn" style="margin-top:12px;" onclick="markDone('${o.id}')">✅ Mark as done</button>`:''}
+    </div>`).join('');
+}
+
+function renderAdminTemplates(tmplList){
+  const el = document.getElementById('adminTemplatesList');
+  if(!tmplList.length){ el.innerHTML='<div class="orders-empty">No templates in database yet.</div>'; return; }
+  el.innerHTML = tmplList.map(t=>`
+    <div class="template-admin-card">
+      <img class="template-admin-thumb" src="${t.image||''}" onerror="this.style.display='none'"/>
+      <div class="template-admin-info">
+        <div class="template-admin-name">${t.title||t.badge||'Untitled'}</div>
+        <div class="template-admin-meta">${t.isFree?'Free':'₹'+(t.price||'?')+' code / ₹'+(t.livePrice||'?')+' site'} · ${t.badge||''}</div>
+      </div>
+      <div class="template-admin-actions">
+        <button class="edit-btn" onclick="editTemplate('${t.id}')">Edit</button>
+        <button class="delete-btn" onclick="deleteTemplate('${t.id}')">Delete</button>
+      </div>
+    </div>`).join('');
+}
+
+async function markDone(id){
+  await fbMarkOrderDone(id);
+  const orders = await fbGetOrders();
+  renderAdminOrders(orders);
+}
+
+async function clearAllOrders(){
+  if(!confirm('Clear ALL orders? This cannot be undone.')) return;
+  await fbDeleteAllOrders();
+  const orders = await fbGetOrders();
+  renderAdminOrders(orders);
+}
+
+function togglePriceFields(){
+  const type = document.getElementById('fType').value;
+  document.getElementById('priceGroup').style.display = type==='paid'?'block':'none';
+  document.getElementById('livePriceGroup').style.display = type==='paid'?'block':'none';
+}
+
+async function saveTemplate(){
+  const btn = document.getElementById('saveTemplateBtn');
+  btn.disabled = true; btn.textContent = 'Saving…';
+  const id = document.getElementById('editTemplateId').value;
+  const included = document.getElementById('fIncluded').value.split('\n').filter(Boolean);
+  const data = {
+    badge: document.getElementById('fBadge').value,
+    emoji: document.getElementById('fEmoji').value,
+    title: document.getElementById('fTitle').value,
+    shortDesc: document.getElementById('fShortDesc').value,
+    desc: document.getElementById('fDesc').value,
+    isFree: document.getElementById('fType').value === 'free',
+    price: parseInt(document.getElementById('fPrice').value)||39,
+    livePrice: parseInt(document.getElementById('fLivePrice').value)||99,
+    demoUrl: document.getElementById('fDemoUrl').value,
+    image: document.getElementById('fImageUrl').value,
+    included,
+    waMsg: document.getElementById('fType').value==='free'
+      ? `Hi! I want the free ${document.getElementById('fTitle').value} 🎂\nMy details:\nName: \nContact: `
+      : `Hi! I paid for ${document.getElementById('fTitle').value}\nMy WhatsApp: {WANUM}\n[Screenshot attached]\nPlease send my source code.`
+  };
+  const ok = await fbSaveTemplate(data, id||null);
+  btn.disabled = false; btn.textContent = 'Save Template →';
+  if(ok){
+    const status = document.getElementById('saveStatus');
+    status.style.display='block';
+    setTimeout(()=>status.style.display='none', 2500);
+    resetTemplateForm();
+    const tmpl = await fbGetTemplates();
+    renderAdminTemplates(tmpl);
+    templates = tmpl.length ? tmpl : getFallbackTemplates();
+    renderCards();
+  } else {
+    alert('Save failed — check your Firebase config.');
+  }
+}
+
+async function editTemplate(id){
+  const tmpl = await fbGetTemplates();
+  const t = tmpl.find(x=>x.id===id);
+  if(!t) return;
+  document.getElementById('editTemplateId').value = id;
+  document.getElementById('fBadge').value = t.badge||'';
+  document.getElementById('fEmoji').value = t.emoji||'';
+  document.getElementById('fTitle').value = t.title||'';
+  document.getElementById('fShortDesc').value = t.shortDesc||'';
+  document.getElementById('fDesc').value = t.desc||'';
+  document.getElementById('fType').value = t.isFree?'free':'paid';
+  document.getElementById('fPrice').value = t.price||39;
+  document.getElementById('fLivePrice').value = t.livePrice||99;
+  document.getElementById('fDemoUrl').value = t.demoUrl||'';
+  document.getElementById('fImageUrl').value = t.image||'';
+  const included = Array.isArray(t.included) ? t.included.join('\n') : (t.included||'');
+  document.getElementById('fIncluded').value = included;
+  togglePriceFields();
+  document.getElementById('formTitle').textContent = '✏️ Edit Template';
+  document.getElementById('adminTabTemplates').scrollTop = 0;
+  document.querySelector('[onclick="switchAdminTab(\'templates\',this)"]').click();
+}
+
+async function deleteTemplate(id){
+  if(!confirm('Delete this template?')) return;
+  await fbDeleteTemplate(id);
+  const tmpl = await fbGetTemplates();
+  renderAdminTemplates(tmpl);
+  templates = tmpl.length ? tmpl : getFallbackTemplates();
+  renderCards();
+}
+
+function resetTemplateForm(){
+  document.getElementById('editTemplateId').value='';
+  document.getElementById('fBadge').value='';
+  document.getElementById('fEmoji').value='';
+  document.getElementById('fTitle').value='';
+  document.getElementById('fShortDesc').value='';
+  document.getElementById('fDesc').value='';
+  document.getElementById('fType').value='free';
+  document.getElementById('fPrice').value='';
+  document.getElementById('fLivePrice').value='';
+  document.getElementById('fDemoUrl').value='';
+  document.getElementById('fImageUrl').value='';
+  document.getElementById('fIncluded').value='';
+  document.getElementById('formTitle').textContent='➕ Add New Template';
+  togglePriceFields();
+}
+
+// image preview in form
+document.addEventListener('input', function(e){
+  if(e.target.id==='fImageUrl'){
+    const prev = document.getElementById('imgPreview');
+    if(prev){ prev.src=e.target.value; prev.style.display=e.target.value?'block':'none'; }
+  }
+});
+
+// ── INIT ──
+loadAndRenderCards();
+</script>
+</body>
+</html>
